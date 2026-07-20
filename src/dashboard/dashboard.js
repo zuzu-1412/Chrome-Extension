@@ -1,6 +1,10 @@
 import { initTheme, toggleTheme } from "../utils/theme.util.js";
 import { JOB_STATUS, JOB_STATUS_LABELS, THEMES } from "../utils/constants.js";
-import { deleteJob, getJobs } from "../services/job.service.js";
+import {
+  deleteJob,
+  getJobs,
+  updateJob,
+} from "../services/job.service.js";
 
 const emptyState = document.getElementById("dashboard-empty");
 const themeToggleBtn = document.getElementById("theme-toggle");
@@ -75,6 +79,7 @@ function renderJobs(items) {
     if (emptyState) {
       emptyState.hidden = false;
     }
+
     const emptyRow = document.createElement("tr");
     emptyRow.className = "empty-table-row";
     emptyRow.innerHTML = `
@@ -85,6 +90,7 @@ function renderJobs(items) {
         </div>
       </td>
     `;
+
     tableBody.appendChild(emptyRow);
     return;
   }
@@ -95,27 +101,74 @@ function renderJobs(items) {
 
   items.forEach((job) => {
     const row = document.createElement("tr");
+
     row.innerHTML = `
       <td>
         <div class="job-role">${job.role || "Untitled role"}</div>
       </td>
+
       <td>
         <div class="job-company">${job.company || "Unknown company"}</div>
       </td>
+
       <td>${job.location || "—"}</td>
-      <td><span class="job-status">${JOB_STATUS_LABELS[job.status] || "Applied"}</span></td>
+
+      <td>
+        <select class="status-select" data-job-id="${job.id}">
+          ${Object.values(JOB_STATUS)
+            .map(
+              (status) => `
+                <option value="${status}"
+                  ${status === job.status ? "selected" : ""}>
+                  ${JOB_STATUS_LABELS[status]}
+                </option>
+              `
+            )
+            .join("")}
+        </select>
+      </td>
+
       <td>${job.dateApplied || "—"}</td>
+
       <td>${job.portal || "—"}</td>
+
       <td class="job-actions">
-        <button type="button" data-delete-id="${job.id || ""}">Delete</button>
+        <button type="button" data-delete-id="${job.id}">
+          Delete
+        </button>
       </td>
     `;
+
     tableBody.appendChild(row);
   });
 
+  // Delete buttons
   tableBody.querySelectorAll("[data-delete-id]").forEach((button) => {
     button.addEventListener("click", async () => {
-      await handleDeleteJob(button.getAttribute("data-delete-id"));
+      await handleDeleteJob(button.dataset.deleteId);
+    });
+  });
+
+  // Status dropdowns
+  tableBody.querySelectorAll(".status-select").forEach((select) => {
+    select.addEventListener("change", async (event) => {
+      const jobId = event.target.dataset.jobId;
+      const newStatus = event.target.value;
+
+      const job = jobs.find((j) => j.id === jobId);
+      if (!job) return;
+
+      // Update locally
+      job.status = newStatus;
+
+      // Persist
+      await updateJob(job);
+
+      // Reload from storage
+      jobs = await getJobs();
+
+      // Refresh dashboard
+      renderDashboard();
     });
   });
 }
