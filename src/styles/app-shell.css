@@ -1,0 +1,41 @@
+.app-shell {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text-primary);
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.app-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.app-brand-mark {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.app-brand-name {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.02em;
+}
+
+.app-header .theme-toggle {
+  width: 32px;
+  height: 32px;
+}

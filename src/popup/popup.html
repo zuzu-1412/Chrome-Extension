@@ -25,12 +25,106 @@
 
       <main class="popup-body">
         <p class="popup-status">
-          Foundation phase — design system and storage are wired up.
-          Track Job and View Dashboard land in the next phases.
+          Capture the role you are applying for and keep your pipeline organized.
         </p>
+        <div class="popup-actions">
+          <button id="track-job-btn" class="btn btn-primary" type="button">Track Job</button>
+          <button id="dashboard-btn" class="btn btn-secondary" type="button">View Dashboard</button>
+        </div>
       </main>
     </div>
 
+    <div id="job-form-overlay" class="form-overlay" aria-hidden="true">
+        <div class="form-overlay-backdrop" data-close-overlay></div>
+        <div class="form-overlay-panel">
+          <div class="modal-shell">
+            <div class="modal-card">
+              <header class="modal-header">
+                <div class="modal-heading">
+                  <p class="eyebrow">Track Job</p>
+                  <h1>Capture a new opportunity</h1>
+                  <p class="modal-subtitle">Record the essentials quickly and keep your pipeline moving.</p>
+                </div>
+                <div class="modal-actions">
+                  <button id="form-theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme"></button>
+                </div>
+              </header>
+
+              <main class="modal-body">
+                <form id="job-form" class="job-form" novalidate>
+                  <div class="form-grid">
+                    <label class="field field-wide">
+                      <span>Current URL</span>
+                      <input id="application-url" name="applicationUrl" type="url" />
+                    </label>
+
+                    <label class="field field-wide">
+                      <span>Job / Role ID</span>
+                      <input id="role" name="role" type="text" required placeholder="Required primary key" />
+                    </label>
+
+                    <label class="field">
+                      <span>Company</span>
+                      <input id="company" name="company" type="text" required />
+                    </label>
+
+                    <label class="field">
+                      <span>Location</span>
+                      <input id="location" name="location" type="text" />
+                    </label>
+
+                    <label class="field">
+                      <span>Status</span>
+                      <select id="status" name="status" required></select>
+                    </label>
+
+                    <label class="field">
+                      <span>Employment Type</span>
+                      <select id="employment-type" name="employmentType"></select>
+                    </label>
+
+                    <label class="field">
+                      <span>Work Mode</span>
+                      <select id="work-mode" name="workMode"></select>
+                    </label>
+
+                    <label class="field">
+                      <span>Salary</span>
+                      <input id="salary" name="salary" type="text" placeholder="Optional" />
+                    </label>
+
+                    <label class="field">
+                      <span>Date Applied</span>
+                      <input id="date-applied" name="dateApplied" type="date" required />
+                    </label>
+
+                    <label class="field field-wide">
+                      <span>Current Page Title</span>
+                      <input id="page-title" name="pageTitle" type="text" />
+                    </label>
+
+                    <label class="field field-wide">
+                      <span>Website / Portal</span>
+                      <input id="portal" name="portal" type="text" placeholder="LinkedIn, Greenhouse, etc." />
+                    </label>
+
+                  </div>
+
+                  <div class="form-actions">
+                    <button class="btn btn-primary" type="submit">Save job</button>
+                    <button class="btn btn-secondary" type="button" id="close-form-btn">Close</button>
+                  </div>
+
+                  <p id="form-message" class="form-message" aria-live="polite"></p>
+                </form>
+              </main>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="../job-form/job-form.js"></script>
     <script type="module" src="popup.js"></script>
   </body>
 </html>

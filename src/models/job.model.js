@@ -63,7 +63,7 @@ export function createJob(fields = {}) {
 export function validateJob(fields) {
   const errors = {};
 
-  if (!fields.role?.trim()) errors.role = "Role is required.";
+  if (!fields.role?.trim()) errors.role = "Job / Role ID is required.";
   if (!fields.company?.trim()) errors.company = "Company is required.";
   if (!fields.dateApplied?.trim())
     errors.dateApplied = "Date applied is required.";

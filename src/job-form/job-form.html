@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Track Job</title>
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/base.css" />
+    <link rel="stylesheet" href="job-form.css" />
+  </head>
+  <body>
+    <div class="modal-shell">
+      <div class="modal-card">
+        <header class="modal-header">
+          <div class="modal-heading">
+            <h1>Track Job</h1>
+          </div>
+          <div class="modal-actions">
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme"></button>
+          </div>
+        </header>
+
+        <main class="modal-body">
+          <form id="job-form" class="job-form" novalidate>
+            <div class="form-grid">
+              <label class="field field-wide">
+                <span>Current URL</span>
+                <input id="application-url" name="applicationUrl" type="url" />
+              </label>
+
+              <label class="field field-wide">
+                <span>Job / Role ID</span>
+                <input id="role" name="role" type="text" required placeholder="Required primary key" />
+              </label>
+
+            <label class="field">
+              <span>Company</span>
+              <input id="company" name="company" type="text" required />
+            </label>
+
+            <label class="field">
+              <span>Location</span>
+              <input id="location" name="location" type="text" />
+            </label>
+
+            <label class="field">
+              <span>Status</span>
+              <select id="status" name="status" required></select>
+            </label>
+
+            <label class="field">
+              <span>Employment Type</span>
+              <select id="employment-type" name="employmentType"></select>
+            </label>
+
+            <label class="field">
+              <span>Work Mode</span>
+              <select id="work-mode" name="workMode"></select>
+            </label>
+
+            <label class="field">
+              <span>Salary</span>
+              <input id="salary" name="salary" type="text" placeholder="Optional" />
+            </label>
+
+            <label class="field">
+              <span>Date Applied</span>
+              <input id="date-applied" name="dateApplied" type="date" required />
+            </label>
+
+            <label class="field field-wide">
+              <span>Website / Portal</span>
+              <input id="portal" name="portal" type="text" placeholder="LinkedIn, Greenhouse, etc." />
+            </label>
+          </div>
+
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit">Save job</button>
+              <button class="btn btn-secondary" type="button" id="close-form-btn">Close</button>
+            </div>
+
+            <p id="form-message" class="form-message" aria-live="polite"></p>
+          </form>
+        </main>
+      </div>
+    </div>
+
+    <script type="module" src="job-form.js"></script>
+  </body>
+</html>

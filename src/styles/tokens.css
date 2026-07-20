@@ -118,11 +118,11 @@
   --text-secondary: #5b6470;
   --text-tertiary: #8b93a1;
 
-  --accent: #4f6d7a;
-  --accent-hover: #3d5563;
+  --accent: #3973ac;
+  --accent-hover: #315f92;
   --accent-fg: #ffffff;
-  --accent-soft: rgba(79, 109, 122, 0.1);
-  --accent-soft-border: rgba(79, 109, 122, 0.28);
+  --accent-soft: rgba(57, 115, 172, 0.12);
+  --accent-soft-border: rgba(57, 115, 172, 0.28);
 
   --shadow-color: rgba(20, 24, 30, 0.08);
   --scrollbar-thumb: #d6d9de;
