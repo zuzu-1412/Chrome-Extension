@@ -1,0 +1,42 @@
+.popup {
+  width: 320px;
+  background: var(--bg);
+}
+
+.popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-4);
+  border-bottom: 1px solid var(--border);
+}
+
+.popup-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.popup-brand-mark {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+}
+
+.popup-brand-name {
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.01em;
+}
+
+.popup-body {
+  padding: var(--space-5) var(--space-4);
+}
+
+.popup-status {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-normal);
+  margin: 0;
+}
